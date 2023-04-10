@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>URL Shortener</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<div class="collapse navbar-collapse" id="navbarNav">
+				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('home') }}">Home</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ url_for('history') }}">History</a>
+					</li>
+				</ul>
+			</div>
+		</nav>	
+		<h1>Welcome to URL Shortener</h1>
+		<form method="POST">
+			<div class="form-group">
+				<label for="url">Enter URL to shorten:</label>
+				<input type="url" name="url" id="url" class="form-control" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Shorten URL</button>
+		</form>
+		{% if shortened_url %}
+		<div class="result">
+			<label for="short-url">Shortened URL:</label>
+			<input type="text" name="short-url" id="short-url" class="form-control" value="{{ shortened_url }}" readonly>
+			<button class="btn btn-secondary" onclick="copyToClipboard()">Copy</button>
+		</div>
+		{% endif %}
+	</div>
+		
+	<script>
+		function copyToClipboard() {
+			var copyText = document.getElementById("short-url");
+			copyText.select();
+			document.execCommand("copy");
+			alert("Copied to clipboard!");
+		}
+	</script>
+</body>
+</html>
