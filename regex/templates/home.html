@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">Match a Regular Expression</h1>
+            <form method="POST" action="{{ url_for('match') }}">
+                <div class="form-group">
+                    <label for="regex">Regular Expression</label>
+                    <input type="text" class="form-control" id="regex" name="regex" placeholder="Enter Regular Expression" required>
+                </div>
+                <div class="form-group">
+                    <label for="test_string">Test String</label>
+                    <textarea class="form-control" id="test_string" name="test_string" placeholder="Enter Test String" required></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Match</button>
+                </div>
+            </form>
+        </div>
+{% endblock %}

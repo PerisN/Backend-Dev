@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="my-5">Result</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Regular Expression</h3>
+        <p class="lead">{{ regex }}</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Test String</h3>
+        <p class="lead">{{ test_string }}</p>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Matches</h3>
+        <p class="lead">{{ count }}</p>
+      </div>          
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Matched Strings</h3>
+        {% if count > 0 %}
+          {% for match in matches %}
+            <p class="lead">{{ match }}</p>
+          {% endfor %}
+        {% else %}
+          <p class="lead">No Matches Found</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
