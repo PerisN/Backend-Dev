@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+
+{% block title %}URL Shortener{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="mb-4">Welcome to URL Shortener</h1>
+
+    <form method="POST">
+        <div class="mb-3">
+            <label for="url" class="form-label">Enter URL to shorten:</label>
+            <input type="url" name="url" id="url" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Shorten URL</button>
+    </form>
+
+    {% if shortened_url %}
+        <div class="alert alert-success">
+            <p>Shortened URL:</p>
+            <div class="input-group mb-3">
+                <input type="text" name="short-url" id="short-url" class="form-control" value="{{ shortened_url }}" readonly>
+                <button class="btn btn-secondary" type="button" onclick="copyToClipboard()">Copy</button>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script>
+function copyToClipboard() {
+    var copyText = document.getElementById("short-url");
+    copyText.select();
+    document.execCommand("copy");
+    alert("Copied to clipboard!");
+}
+</script>
+{% endblock %}

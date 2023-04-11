@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+	<h1>URL Shortener History</h1>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Original URL</th>
+				<th>Shortened URL</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for url in urls %}
+			<tr>
+				<td>{{ url.original_url }}</td>
+				<td><a href="{{ url.shortened_url }}" target="_blank">{{ url.shortened_url }}</a></td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a href="{{ url_for('home') }}" class="btn btn-primary">Back to Home</a>
+</div>
+{% endblock %}
+
